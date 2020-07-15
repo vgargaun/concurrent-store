@@ -42,7 +42,16 @@ public class Stall {
                    Seller seller = sellers.get(i);
 
                    new Thread(()-> {
-                       seller.serveTheBuyer(buyers.poll());
+                       try {
+                           seller.serveTheBuyer(buyers.poll());
+                       }
+                       catch (java.lang.NullPointerException e){
+                           try {
+                               Thread.sleep(1000);
+                           } catch (InterruptedException q) {
+                               q.printStackTrace();
+                           }
+                       }
                        servedBuyers.incrementAndGet();
                    }).start();
                }

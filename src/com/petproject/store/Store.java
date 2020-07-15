@@ -23,11 +23,11 @@ public class Store {
     /**
      * Maximum buyer count
      */
-    int storeSize = 10;
+    int storeSize = 100;
 
     public void openStore() {
 
-        SellersService.inviteSellers(sellers, 2);
+        SellersService.inviteSellers(sellers, 50);
         BuyerService.inviteNewBuyers(buyers, storeSize);
         log.info("Store is open");
         startTrading();
